@@ -1,6 +1,7 @@
 package felixsoeren.wio.workitout;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -12,24 +13,29 @@ import android.widget.EditText;
  */
 
 public class SecondActivity extends Activity implements View.OnClickListener {
-    private Button changeButton;
-    public EditText editText1, editText2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
-        changeButton = (Button) findViewById(R.id.activityChange2);
-        changeButton.setOnClickListener(this);
 
-        editText1 = (EditText) findViewById(R.id.editText1);
-        editText2 = (EditText) findViewById(R.id.editText2);
+        Thread myThread = new Thread() {
 
-        SharedPreferences mySharedProferences = getSharedPreferences("MySPFILE", 0);
+            @Override
+            public void run() {
+                try {
+                    sleep(3000);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
 
-        editText1.setText(mySharedProferences.getString("name", "Name"));
-        editText2.setText(mySharedProferences.getString("vorname", "Vorname"));
-
+        };
+        myThread.start();
     }
 
     @Override
@@ -40,14 +46,5 @@ public class SecondActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onStop() {
         super.onStop();
-
-        SharedPreferences mySharedProferences = getSharedPreferences("MySPFILE", 0);
-
-        SharedPreferences.Editor editor = mySharedProferences.edit();
-
-        editor.putString("name", editText1.getText().toString());
-        editor.putString("vorname", editText2.getText().toString());
-
-        editor.commit();
     }
 }

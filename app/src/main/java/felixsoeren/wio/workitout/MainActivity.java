@@ -26,9 +26,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         changeButton = (Button) findViewById(R.id.activityChange);
         changeButton.setOnClickListener(this);
 
-        SharedPreferences mySharedProferences = getSharedPreferences("MySPFILE", 0);
-
-        Toast.makeText(getApplicationContext(), "Hallo: " + mySharedProferences.getString("vorname", "Vorname") + " " + mySharedProferences.getString("name", "Name"), Toast.LENGTH_LONG).show();
     }
 
 
