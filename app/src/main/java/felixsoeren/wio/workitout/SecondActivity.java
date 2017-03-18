@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 /**
  * Created by Felix on 18.03.2017.
@@ -14,18 +15,26 @@ import android.widget.EditText;
 
 public class SecondActivity extends Activity implements View.OnClickListener {
 
+    ProgressBar pgb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
 
+        pgb=(ProgressBar)findViewById(R.id.progressBar);
+
+
+
         Thread myThread = new Thread() {
 
             @Override
             public void run() {
                 try {
-                    sleep(3000);
+                    for (int i = 0; i <= 100; i = i+2) {
+                        pgb.setProgress(i);
+                        sleep(60);
+                    }
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     finish();
