@@ -2,11 +2,8 @@ package felixsoeren.wio.workitout;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 
 /**
@@ -37,6 +34,7 @@ public class SecondActivity extends Activity implements View.OnClickListener {
                     }
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.right_in_animation, R.anim.left_out_animation);
                     finish();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
