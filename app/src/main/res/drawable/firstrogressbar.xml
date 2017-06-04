@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@android:id/background">
-        <color android:color="#47f3ff"/>
+        <color android:color="#5882FA"/> <!-- Ladebalken Lower Level -->
     </item>
     <item>
         <clip>
-            <color android:color="#0070f9"/>
+            <color android:color="#A9E2F3"/>  <!-- Ladebalken Top Level -->
         </clip>
     </item>
+
+
 </layer-list>
